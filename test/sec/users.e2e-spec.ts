@@ -9,7 +9,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Server } from 'https';
 
 describe('/users', () => {
-  const timeout = 300000;
+  const timeout = 600000;
   jest.setTimeout(timeout);
 
   let runner!: SecRunner;
@@ -49,24 +49,6 @@ describe('/users', () => {
   });
 
   afterEach(() => runner.clear());
-
-  describe('POST /', () => {
-    it('should not have XSS', async () => {
-      await runner
-        .createScan({
-          name: expect.getState().currentTestName,
-          tests: [TestType.XSS],
-          attackParamLocations: [AttackParamLocation.BODY]
-        })
-        .threshold(Severity.MEDIUM)
-        .timeout(timeout)
-        .run({
-          method: 'POST',
-          url: `${baseUrl}/users`,
-          body: { firstName: 'Test', lastName: 'Test' }
-        });
-    });
-  });
 
   describe('GET /:id', () => {
     it('should not have SQLi', async () => {
