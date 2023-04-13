@@ -1,3 +1,4 @@
+Making a small change to the README.md file :)
 # SecTester SDK Demo
 
 ## Table of contents
