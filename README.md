@@ -1,3 +1,4 @@
+:bug: Adding a bug to the system
 # SecTester SDK Demo
 
 ## Table of contents
